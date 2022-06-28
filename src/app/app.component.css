@@ -1,3 +1,17 @@
 p {
   font-family: Lato;
 }
+table{
+  border-collapse: collapse;
+}
+th,td{
+  border: 1px solid black;
+}
+
+form{
+  margin-bottom: 10px;
+
+}
+input,.label{
+  margin-right: 8px;
+}

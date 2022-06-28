@@ -9,7 +9,7 @@ import { HelperService } from './helper.service';
 })
 export class AppComponent implements OnInit {
   name = 'Angular';
-  userList: any = [];
+  userList: any ;
   form: FormGroup;
   constructor(private helperService: HelperService, private fb: FormBuilder) {}
 
@@ -28,6 +28,8 @@ export class AppComponent implements OnInit {
       .subscribe((resp: any) => {
         this.userList = resp.filter(item=>item.fork==this.form.get('fork').value).sort((a, b) => b.size - a.size);
         console.log(resp);
+      },(err)=>{
+console.log("err",err)
       });
   }
 }
