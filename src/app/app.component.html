@@ -1,4 +1,30 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+
+<form [formGroup]="form" (ngSubmit)="searchUser()">
+  <div>
+    <span>GitHub UserName:</span>
+    <input type="text" formControlName="name"/>
+    <span>Fork:</span>
+    <input type="checkbox" formControlName="fork"/>
+    <button type="submit" [disabled]="form.invalid">Submit</button>
+  </div>
+ 
+</form>
+
+<table *ngIf="userList && userList.length>0;else elsetemplate ">
+  <tr>
+    <th>Name</th>
+    <th>Language</th>
+    <th>Description</th>
+    <th>Size</th>
+  </tr>
+  <tr *ngFor="let item of userList">
+    <td>{{ item.name }}</td>
+    <td>{{ item.language }}</td>
+    <td>{{ item.description }}</td>
+    <td>{{ item.size }}</td>
+  </tr>
+</table>
+
+<ng-template #elsetemplate >
+  Not Found
+</ng-template>
