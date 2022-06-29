@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   name = 'Angular';
   userList: any ;
   form: FormGroup;
+submitted: boolean;
   constructor(private helperService: HelperService, private fb: FormBuilder) {}
 
   ngOnInit() {
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit {
   searchUser() {
     console.log('call');
     this.userList = [];
+    this.submitted=true;
     this.helperService
       .getUser(this.form.get('name').value)
       .subscribe((resp: any) => {
